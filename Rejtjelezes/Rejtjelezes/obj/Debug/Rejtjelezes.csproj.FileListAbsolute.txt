@@ -1,0 +1,7 @@
+C:\Users\Bende\Desktop\Dualis_feladat\Rejtjelezes\Rejtjelezes\bin\Debug\Rejtjelezes.exe.config
+C:\Users\Bende\Desktop\Dualis_feladat\Rejtjelezes\Rejtjelezes\bin\Debug\Rejtjelezes.exe
+C:\Users\Bende\Desktop\Dualis_feladat\Rejtjelezes\Rejtjelezes\bin\Debug\Rejtjelezes.pdb
+C:\Users\Bende\Desktop\Dualis_feladat\Rejtjelezes\Rejtjelezes\obj\Debug\Rejtjelezes.csproj.AssemblyReference.cache
+C:\Users\Bende\Desktop\Dualis_feladat\Rejtjelezes\Rejtjelezes\obj\Debug\Rejtjelezes.csproj.CoreCompileInputs.cache
+C:\Users\Bende\Desktop\Dualis_feladat\Rejtjelezes\Rejtjelezes\obj\Debug\Rejtjelezes.exe
+C:\Users\Bende\Desktop\Dualis_feladat\Rejtjelezes\Rejtjelezes\obj\Debug\Rejtjelezes.pdb
