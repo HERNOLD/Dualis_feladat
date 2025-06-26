@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rejtjelezes", "Rejtjelezes\Rejtjelezes.csproj", "{5471CF95-26CD-48EA-BEA0-D7665FB8B0C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTesting", "AutoTesting\AutoTesting.csproj", "{F9432875-8862-43CA-AD31-D84E54EFCA5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5471CF95-26CD-48EA-BEA0-D7665FB8B0C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5471CF95-26CD-48EA-BEA0-D7665FB8B0C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5471CF95-26CD-48EA-BEA0-D7665FB8B0C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9432875-8862-43CA-AD31-D84E54EFCA5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9432875-8862-43CA-AD31-D84E54EFCA5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9432875-8862-43CA-AD31-D84E54EFCA5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9432875-8862-43CA-AD31-D84E54EFCA5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
