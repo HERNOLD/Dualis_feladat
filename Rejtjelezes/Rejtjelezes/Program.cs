@@ -14,7 +14,7 @@ namespace Rejtjelezes
             while (true)
             {
                 Console.WriteLine("Kérem válasszon az alábbi opciók közül!");
-                Console.WriteLine("Titkosítás (1-es gomb), Dekódolás (2-es gomb), Kilépés (3-as gomb)");
+                Console.WriteLine("Titkosítás (1-es gomb), Dekódolás (2-es gomb), Kulcs kitalálás (3-as gomb), Kilépés (4-es gomb)");
 
                 string i = Console.ReadLine();
 
@@ -27,10 +27,20 @@ namespace Rejtjelezes
                         DecodeMenu();
                         break;
                     case "3":
+                        KeyDecodeMenu();
+                        break;
+                    case "4":
                         Environment.Exit(0);
                         break;
                 }
             }
+        }
+
+        static void KeyDecodeMenu()
+        {
+            Console.WriteLine(Task1.Encode("amazing ability", "help me please help me"));
+            Console.WriteLine(Task1.Encode("action actor", "help me please help me"));
+            //Task2.FindPossibleKeys(Task1.Encode("amazing ability", "help me please help me"), Task1.Encode("action actor", "help me please help me"));
         }
 
         static void EncodeMenu()
