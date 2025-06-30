@@ -38,9 +38,9 @@ namespace Rejtjelezes
 
         static void KeyDecodeMenu()
         {
-            Console.WriteLine(Task1.Encode("curiosity killed the cat", "help me please help me please"));
-            Console.WriteLine(Task1.Encode("early bird catches the worm", "help me please help me please"));
-            Task2.FindKey(Task1.Encode("curiosity killed the cat", "help me please help me please"), Task1.Encode("early bird catches the worm", "help me please help me please"), new List<int>());
+            Console.WriteLine(Task1.Encode("abuse ability able", "help me please help me please"));
+            Console.WriteLine(Task1.Encode("academic accident about", "help me please help me please"));
+            Task2.FindKeySegment(Task1.Encode("abuse ability able", "help me please help me please"), Task1.Encode("academic accident about", "help me please help me please"), "");
         }
 
         static void EncodeMenu()
