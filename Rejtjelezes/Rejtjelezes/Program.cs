@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Rejtjelezes
 {
@@ -38,9 +39,16 @@ namespace Rejtjelezes
 
         static void KeyDecodeMenu()
         {
-            Console.WriteLine(Task1.Encode("abuse ability able", "help me please help me please"));
-            Console.WriteLine(Task1.Encode("academic accident about", "help me please help me please"));
-            Task2.FindKeySegment(Task1.Encode("abuse ability able", "help me please help me please"), Task1.Encode("academic accident about", "help me please help me please"), "");
+            //Console.WriteLine(Task1.Encode("kill me please", "help me please help me please"));
+            //Console.WriteLine(Task1.Encode("want to die very much", "help me please help me please"));
+
+            string[] words = File.ReadAllLines("words.txt");
+
+            Task2.FindKeySegment(Task1.Encode("cat play on the tree", "csacska macska feher nyuszi"), Task1.Encode("we love rain very much", "csacska macska feher nyuszi"), "", words);
+            foreach (string key in Task2.possibleKeys)
+            {
+                Console.WriteLine($"Possible key: {key}, the messages based on it: {Task1.Decode(Task1.Encode("cat play on the tree", "csacska macska feher nyuszi"), key)}, the other: {Task1.Decode(Task1.Encode("we love rain very much", "csacska macska feher nyuszi"), key)}");
+            }
         }
 
         static void EncodeMenu()
