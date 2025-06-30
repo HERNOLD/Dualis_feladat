@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rejtjelezes;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace AutoTesting
 {
@@ -8,7 +10,7 @@ namespace AutoTesting
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void EncodeingDecodingTest1()
         {
             string message = "hello world";
             string key = "xmckl xmckl";
@@ -17,6 +19,120 @@ namespace AutoTesting
             string decoded = Task1.Decode(encoded, key);
 
             Assert.AreEqual(message, decoded);
+        }
+
+        [TestMethod]
+        public void EncodeingDecodingTest2()
+        {
+            string message = "my name is not important";
+            string key = "guggaga baba yaga bish bash";
+
+            string encoded = Task1.Encode(message, key);
+            string decoded = Task1.Decode(encoded, key);
+
+            Assert.AreEqual(message, decoded);
+        }
+
+        [TestMethod]
+        public void FindingKeyTest1()
+        {
+            string message1 = "chair like the dog and the cat";
+            string message2 = "classic hate is the cause";
+            string key = "gugu gaga baba yaga bish bash bosh";
+
+            string encoded1 = Task1.Encode(message1, key);
+            string encoded2 = Task1.Encode(message2, key);
+
+            string[] words = File.ReadAllLines("words.txt");
+
+            HashSet<string> wordsHashSet = new HashSet<string>(words);
+            Task2.possibleKeys = new List<string>();
+
+            Trie trie = new Trie();
+            foreach (string word in words)
+            {
+                trie.Insert(word);
+            }
+
+            Task2.FindKeySegment(encoded1, encoded2, "", wordsHashSet, trie);
+
+            foreach(string possibleKey in Task2.possibleKeys)
+            {
+                if(Task1.Decode(encoded1, possibleKey) == message1 && Task1.Decode(encoded2, possibleKey) == message2)
+                {
+                    Assert.IsTrue(true);
+                    return;
+                }
+            }
+            Assert.Fail("Nem találtam");
+        }
+
+        [TestMethod]
+        public void FindingKeyTest2()
+        {
+            string message1 = "hey i just meet you and this is crazy";
+            string message2 = "but here is my number so call me maybe";
+            string key = "wahahahahajekjfl awkjela akwjelakja asdawdasdwas";
+
+            string encoded1 = Task1.Encode(message1, key);
+            string encoded2 = Task1.Encode(message2, key);
+
+            string[] words = File.ReadAllLines("words.txt");
+
+            HashSet<string> wordsHashSet = new HashSet<string>(words);
+            Task2.possibleKeys = new List<string>();
+
+            Trie trie = new Trie();
+            foreach (string word in words)
+            {
+                trie.Insert(word);
+            }
+
+            Task2.FindKeySegment(encoded1, encoded2, "", wordsHashSet, trie);
+
+            foreach (string possibleKey in Task2.possibleKeys)
+            {
+                if (Task1.Decode(encoded1, possibleKey) == message1 && Task1.Decode(encoded2, possibleKey) == message2)
+                {
+                    Assert.IsTrue(true);
+                    return;
+                }
+            }
+            Assert.Fail("Nem találtam");
+        }
+
+        [TestMethod]
+        public void FindingKeyTest3()
+        {
+            string message1 = "bad";
+            string message2 = "hell";
+            string key = "asdefasjdlka  as";
+
+            string encoded1 = Task1.Encode(message1, key);
+            string encoded2 = Task1.Encode(message2, key);
+
+            string[] words = File.ReadAllLines("words.txt");
+
+            HashSet<string> wordsHashSet = new HashSet<string>(words);
+            Task2.possibleKeys = new List<string>();
+
+            Trie trie = new Trie();
+            foreach (string word in words)
+            {
+                trie.Insert(word);
+            }
+
+            Task2.FindKeySegment(encoded1, encoded2, "", wordsHashSet, trie);
+
+            foreach (string possibleKey in Task2.possibleKeys)
+            {
+                if (Task1.Decode(encoded1, possibleKey) == message1 && Task1.Decode(encoded2, possibleKey) == message2)
+                {
+                    Assert.IsTrue(true);
+                    return;
+                }
+            }
+            Assert.Fail("Nem találtam");
         }
     }
 }

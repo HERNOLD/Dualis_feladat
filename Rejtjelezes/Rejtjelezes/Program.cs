@@ -39,15 +39,26 @@ namespace Rejtjelezes
 
         static void KeyDecodeMenu()
         {
-            //Console.WriteLine(Task1.Encode("kill me please", "help me please help me please"));
-            //Console.WriteLine(Task1.Encode("want to die very much", "help me please help me please"));
-
             string[] words = File.ReadAllLines("words.txt");
 
-            Task2.FindKeySegment(Task1.Encode("cat play on the tree", "csacska macska feher nyuszi"), Task1.Encode("we love rain very much", "csacska macska feher nyuszi"), "", words);
-            foreach (string key in Task2.possibleKeys)
+            HashSet<string> wordsHashSet = new HashSet<string>(words);
+            Task2.possibleKeys = new List<string>();
+
+            Trie trie = new Trie();
+            foreach (string word in words)
             {
-                Console.WriteLine($"Possible key: {key}, the messages based on it: {Task1.Decode(Task1.Encode("cat play on the tree", "csacska macska feher nyuszi"), key)}, the other: {Task1.Decode(Task1.Encode("we love rain very much", "csacska macska feher nyuszi"), key)}");
+                trie.Insert(word);
+            }
+
+            Console.WriteLine("Kérem adja meg az első kódolt üzenetet!");
+            string message1=Console.ReadLine();
+            Console.WriteLine("Kérem adja meg a második kódolt üzenetet!");
+            string message2 = Console.ReadLine();
+
+            Task2.FindKeySegment(message1, message2, "", wordsHashSet, trie);
+            foreach (string possibleKey in Task2.possibleKeys)
+            {
+                Console.WriteLine($"Egyik lehetséges kulcs: {possibleKey}, az üzenetek a kulcs alapján: {Task1.Decode(message1, possibleKey)}, {Task1.Decode(message2, possibleKey)}");
             }
         }
 
