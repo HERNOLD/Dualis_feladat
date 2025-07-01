@@ -50,15 +50,21 @@ namespace Rejtjelezes
                 trie.Insert(word);
             }
 
-            Console.WriteLine("Kérem adja meg az első kódolt üzenetet!");
+            Console.WriteLine("Kérem adja meg az első üzenetet! (még nem kódolva)");
             string message1=Console.ReadLine();
-            Console.WriteLine("Kérem adja meg a második kódolt üzenetet!");
+            Console.WriteLine("Kérem adja meg a második üzenetet! (még nem kódolva)");
             string message2 = Console.ReadLine();
+            //nem kapja meg a kulcsot maga a kitaláló program, de így egyszerűbb a felhasználónak
+            Console.WriteLine("Kérem adja meg a közös kulcsot!");
+            string key=Console.ReadLine();
 
-            Task2.FindKeySegment(message1, message2, "", wordsHashSet, trie);
+            string codedMessage1 = Task1.Encode(message1, key);
+            string codedMessage2=Task1.Encode(message2 , key);
+
+            Task2.FindKeySegment(codedMessage1, codedMessage2, "", wordsHashSet, trie);
             foreach (string possibleKey in Task2.possibleKeys)
             {
-                Console.WriteLine($"Egyik lehetséges kulcs: {possibleKey}, az üzenetek a kulcs alapján: {Task1.Decode(message1, possibleKey)}, {Task1.Decode(message2, possibleKey)}");
+                Console.WriteLine($"Egyik lehetséges kulcs: {possibleKey}, az üzenetek a kulcs alapján: {Task1.Decode(codedMessage1, possibleKey)}, {Task1.Decode(codedMessage2, possibleKey)}");
             }
         }
 

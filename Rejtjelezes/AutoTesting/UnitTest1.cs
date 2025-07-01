@@ -58,13 +58,14 @@ namespace AutoTesting
 
             foreach(string possibleKey in Task2.possibleKeys)
             {
+                //sok lehetséges kulcs lehet ami értelmes szavakból álló mondatot ad vissza
                 if(Task1.Decode(encoded1, possibleKey) == message1 && Task1.Decode(encoded2, possibleKey) == message2)
                 {
                     Assert.IsTrue(true);
                     return;
                 }
             }
-            Assert.Fail("Nem találtam");
+            Assert.Fail("Nem találtam kulcsot");
         }
 
         [TestMethod]
@@ -92,13 +93,14 @@ namespace AutoTesting
 
             foreach (string possibleKey in Task2.possibleKeys)
             {
+                //sok lehetséges kulcs lehet ami értelmes szavakból álló mondatot ad vissza
                 if (Task1.Decode(encoded1, possibleKey) == message1 && Task1.Decode(encoded2, possibleKey) == message2)
                 {
                     Assert.IsTrue(true);
                     return;
                 }
             }
-            Assert.Fail("Nem találtam");
+            Assert.Fail("Nem találtam kulcsot");
         }
 
         [TestMethod]
@@ -126,13 +128,49 @@ namespace AutoTesting
 
             foreach (string possibleKey in Task2.possibleKeys)
             {
+                //sok lehetséges kulcs lehet ami értelmes szavakból álló mondatot ad vissza
                 if (Task1.Decode(encoded1, possibleKey) == message1 && Task1.Decode(encoded2, possibleKey) == message2)
                 {
                     Assert.IsTrue(true);
                     return;
                 }
             }
-            Assert.Fail("Nem találtam");
+            Assert.Fail("Nem találtam kulcsot");
+        }
+
+        [TestMethod]
+        public void FindingKeyTest4()
+        {
+            string message1 = "curiosity killed the cat";
+            string message2 = "early bird catches the worm";
+            string key = "i walked to burger king than i walked back home from burger king";
+
+            string encoded1 = Task1.Encode(message1, key);
+            string encoded2 = Task1.Encode(message2, key);
+
+            string[] words = File.ReadAllLines("words.txt");
+
+            HashSet<string> wordsHashSet = new HashSet<string>(words);
+            Task2.possibleKeys = new List<string>();
+
+            Trie trie = new Trie();
+            foreach (string word in words)
+            {
+                trie.Insert(word);
+            }
+
+            Task2.FindKeySegment(encoded1, encoded2, "", wordsHashSet, trie);
+
+            foreach (string possibleKey in Task2.possibleKeys)
+            {
+                //sok lehetséges kulcs lehet ami értelmes szavakból álló mondatot ad vissza
+                if (Task1.Decode(encoded1, possibleKey) == message1 && Task1.Decode(encoded2, possibleKey) == message2)
+                {
+                    Assert.IsTrue(true);
+                    return;
+                }
+            }
+            Assert.Fail("Nem találtam kulcsot");
         }
     }
 }
