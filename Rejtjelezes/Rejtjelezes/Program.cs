@@ -39,16 +39,7 @@ namespace Rejtjelezes
 
         static void KeyDecodeMenu()
         {
-            string[] words = File.ReadAllLines("words.txt");
-
-            HashSet<string> wordsHashSet = new HashSet<string>(words);
             Task2.possibleKeys = new List<string>();
-
-            Trie trie = new Trie();
-            foreach (string word in words)
-            {
-                trie.Insert(word);
-            }
 
             Console.WriteLine("Kérem adja meg az első üzenetet! (még nem kódolva)");
             string message1=Console.ReadLine();
@@ -61,7 +52,7 @@ namespace Rejtjelezes
             string codedMessage1 = Task1.Encode(message1, key);
             string codedMessage2=Task1.Encode(message2 , key);
 
-            Task2.FindKeySegment(codedMessage1, codedMessage2, "", wordsHashSet, trie);
+            Task2.StartFindingKeySegment(codedMessage1, codedMessage2);
             foreach (string possibleKey in Task2.possibleKeys)
             {
                 Console.WriteLine($"Egyik lehetséges kulcs: {possibleKey}, az üzenetek a kulcs alapján: {Task1.Decode(codedMessage1, possibleKey)}, {Task1.Decode(codedMessage2, possibleKey)}");

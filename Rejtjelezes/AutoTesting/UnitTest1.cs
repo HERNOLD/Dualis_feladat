@@ -43,20 +43,9 @@ namespace AutoTesting
             string encoded1 = Task1.Encode(message1, key);
             string encoded2 = Task1.Encode(message2, key);
 
-            string[] words = File.ReadAllLines("words.txt");
+            Task2.StartFindingKeySegment(encoded1, encoded2);
 
-            HashSet<string> wordsHashSet = new HashSet<string>(words);
-            Task2.possibleKeys = new List<string>();
-
-            Trie trie = new Trie();
-            foreach (string word in words)
-            {
-                trie.Insert(word);
-            }
-
-            Task2.FindKeySegment(encoded1, encoded2, "", wordsHashSet, trie);
-
-            foreach(string possibleKey in Task2.possibleKeys)
+            foreach (string possibleKey in Task2.possibleKeys)
             {
                 //sok lehetséges kulcs lehet ami értelmes szavakból álló mondatot ad vissza
                 if(Task1.Decode(encoded1, possibleKey) == message1 && Task1.Decode(encoded2, possibleKey) == message2)
@@ -78,18 +67,7 @@ namespace AutoTesting
             string encoded1 = Task1.Encode(message1, key);
             string encoded2 = Task1.Encode(message2, key);
 
-            string[] words = File.ReadAllLines("words.txt");
-
-            HashSet<string> wordsHashSet = new HashSet<string>(words);
-            Task2.possibleKeys = new List<string>();
-
-            Trie trie = new Trie();
-            foreach (string word in words)
-            {
-                trie.Insert(word);
-            }
-
-            Task2.FindKeySegment(encoded1, encoded2, "", wordsHashSet, trie);
+            Task2.StartFindingKeySegment(encoded1, encoded2);
 
             foreach (string possibleKey in Task2.possibleKeys)
             {
@@ -113,18 +91,7 @@ namespace AutoTesting
             string encoded1 = Task1.Encode(message1, key);
             string encoded2 = Task1.Encode(message2, key);
 
-            string[] words = File.ReadAllLines("words.txt");
-
-            HashSet<string> wordsHashSet = new HashSet<string>(words);
-            Task2.possibleKeys = new List<string>();
-
-            Trie trie = new Trie();
-            foreach (string word in words)
-            {
-                trie.Insert(word);
-            }
-
-            Task2.FindKeySegment(encoded1, encoded2, "", wordsHashSet, trie);
+            Task2.StartFindingKeySegment(encoded1, encoded2);
 
             foreach (string possibleKey in Task2.possibleKeys)
             {
@@ -148,18 +115,7 @@ namespace AutoTesting
             string encoded1 = Task1.Encode(message1, key);
             string encoded2 = Task1.Encode(message2, key);
 
-            string[] words = File.ReadAllLines("words.txt");
-
-            HashSet<string> wordsHashSet = new HashSet<string>(words);
-            Task2.possibleKeys = new List<string>();
-
-            Trie trie = new Trie();
-            foreach (string word in words)
-            {
-                trie.Insert(word);
-            }
-
-            Task2.FindKeySegment(encoded1, encoded2, "", wordsHashSet, trie);
+            Task2.StartFindingKeySegment(encoded1, encoded2);
 
             foreach (string possibleKey in Task2.possibleKeys)
             {

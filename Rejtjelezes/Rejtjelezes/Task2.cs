@@ -14,8 +14,10 @@ namespace Rejtjelezes
     public class Task2
     {
         public static List<string> possibleKeys= new List<string>();
+        private static HashSet<string> words;
+        private static Trie trie;
 
-        public static List<int> GetKeyBasedOnMessage(List<int> codedMessageNumbers, string decodedMessage)
+        private static List<int> GetKeyBasedOnMessage(List<int> codedMessageNumbers, string decodedMessage)
         {
             var wordInNumbers = Task1.ConvertStringToNumbers(decodedMessage);
             List<int> partialKey = new List<int>();
@@ -31,7 +33,20 @@ namespace Rejtjelezes
             return partialKey;
         }
 
-        public static void FindKeySegment(string codedMessage1, string codedMessage2, string decodedMessage1, HashSet<string> words, Trie trie)
+        public static void StartFindingKeySegment(string codedMessage1, string codedMessage2)
+        {
+            string[] wordsArray = File.ReadAllLines("words.txt");
+            words=new HashSet<string>(wordsArray);
+            trie = new Trie();
+            foreach (var word in wordsArray)
+            {
+                trie.Insert(word);
+            }
+
+            FindKeySegment(codedMessage1, codedMessage2, "");
+        }
+
+        private static void FindKeySegment(string codedMessage1, string codedMessage2, string decodedMessage1)
         {
             if (codedMessage1.Length < codedMessage2.Length)
             {
@@ -103,7 +118,7 @@ namespace Rejtjelezes
 
                     if (isValid)
                     {
-                        FindKeySegment(codedMessage1, codedMessage2, newDecodedMessage, words, trie);
+                        FindKeySegment(codedMessage1, codedMessage2, newDecodedMessage);
                     }
                 }
             }
